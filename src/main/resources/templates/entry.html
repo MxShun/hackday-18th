@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/static/imagePreview.js"></script>
+    <script src="imagePreview.js"></script>
     <title>アップロード</title>
 </head>
 
@@ -12,9 +12,10 @@
   <div>アップロード画面</div>
   <form method="post" action="/entry" enctype="multipart/form-data">
       <p>切手コード入れたい</p>
-      <label>img:</label><input type="file" name="image" accept="image/*" capture="camera" id="file" />
+      <label>img:</label><input type="file" name="image" accept="image/*" capture="camera" id="file" onchange="previewImage(this);"/>
       <br>
       <input type="submit">
   </form>
+  <img id="preview" src="" style="max-width:200px;">
 </body>
 </html>
