@@ -1,0 +1,30 @@
+package com.kitteless.kittelessfront.controller;
+
+import com.kitteless.kittelessfront.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+/**
+ * アカウント登録
+ */
+@Controller
+public class RegisterController {
+
+    /**
+     service できあがりまち
+    @Autowired
+    LoginService loginService;
+     */
+
+    @GetMapping(value = "/register")
+    public String login() {
+        // TODO: リクエストでユーザ名とか受け取ったりする
+
+        // TODO: serviceできあがりしだい呼び出す
+        // loginService.postLogin();
+
+        // TODO: レスポンスにsetAttributeしたりする
+        return "register";
+    }
+}
