@@ -14,8 +14,13 @@ public class RegisterService {
      * アカウント登録の情報をPOSTしてアカウント登録
      * @return
      */
-    public String register(String username, String password) {
-        registerRepository.post("user", "pw");
-        return "success";
+    public boolean register(String username, String password) {
+        String result = registerRepository.post(username, password);
+
+        if (result.equals("success")) {
+            return true;
+        }
+
+        return false;
     }
 }
