@@ -1,5 +1,6 @@
 package com.kitteless.kittelessfront.controller;
 
+import com.kitteless.kittelessfront.presenter.StampPresenter;
 import com.kitteless.kittelessfront.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,18 +22,20 @@ public class EntryController {
 
     @PostMapping(value = "/entry")
     public String entry(
-            // TODO: stampCodeは必須なので直す
-            @RequestParam(required = false) String stampCode,
             @RequestParam MultipartFile image,
             Model model,
             HttpSession session
     ) {
+        String imageString = "";
         try {
             byte[] imgBytes = image.getBytes();
-            String imgStr = Base64.getEncoder().encodeToString(imgBytes);
-        } catch (Exception e) {}
+            imageString = Base64.getEncoder().encodeToString(imgBytes);
+        } catch (Exception e) {
+
+        }
+        String stampCode = session.getAttribute("stampCode").toString();
         String userId = session.getAttribute("userId").toString();
-        boolean result = entryService.entry(userId, stampCode, imgStr);
+        boolean result = entryService.entry(userId, stampCode, imageString);
         
         if (result) {
             return "redirect:complete";
@@ -43,7 +46,13 @@ public class EntryController {
     }
 
     @GetMapping(value = "/entry")
-    public String showEntry() {
+    public String showEntry(
+            Model model,
+            HttpSession session
+    ) {
+        String stampCode = session.getAttribute("stampCode").toString();
+        StampPresenter stampPresenter = new StampPresenter(stampCode);
+        model.addAttribute(stampPresenter);
         return "entry";
     }
 }
