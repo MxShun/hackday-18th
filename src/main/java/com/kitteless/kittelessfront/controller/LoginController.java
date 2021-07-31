@@ -23,18 +23,18 @@ public class LoginController {
             @RequestParam String password,
             Model model
     ) {
-        boolean result = loginService.login(username, password);
-        // if (result) {
-        //     return "redirect:[金額入力+決済画面]";
-        // }
+        String userId = loginService.login(username, password);
+        if (userId != null) {
+            return "redirect:payment";
+        }
 
+        // ログインに失敗したら login: false を model にセットするので、画面側でこれを使って失敗したことを表示する
+        model.addAttribute("login", false);
         return "login";
     }
 
     @GetMapping(value = "/login")
-    public String showLogin(
-            Model model
-    ) {
+    public String showLogin() {
         return "login";
     }
 
