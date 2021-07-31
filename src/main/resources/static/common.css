@@ -5,6 +5,9 @@ body, body * {
     box-sizing: border-box;
     font-size: 20px;
 }
+body{
+    background-color: #eee;
+}
 header{
     padding: 10px;
     background-color: #cc0000;
@@ -15,4 +18,86 @@ header h1{
 }
 main {
     margin: 0px auto;
+    padding: 20px;
+}
+
+.mt-100{
+    margin-top: 100px;
+}
+
+
+/*main*/
+main h2{
+    font-size: 20px;
+}
+
+main p{
+    font-size: 15px;
+}
+
+main a{
+    font-size: 15px;
+}
+
+main form{
+    padding: 50px;
+    margin: 30px auto;
+    background-color: #fff;
+}
+
+main input:not([type="submit"]){
+    font-size: 20px;
+    width: 80%;
+    border: none;
+    margin: 20px auto;
+    border-bottom: 1px solid #ddd;
+}
+
+main input:not([type="submit"])::placeholder{
+    color: #aaa;
+}
+
+main input[type="submit"]{
+    background-color: #def;
+    padding: 5px 20px;
+    border-color: #888;
+    border-radius: 5px;
+    border-width: 2px;
+    margin: 20px auto;
+}
+
+/*style*/
+main button{
+    background-color: #ddd;
+    padding: 5px 20px;
+    border-color: #888;
+    border-radius: 5px;
+    border-width: 2px;
+    /*margin: 20px auto;*/
+}
+
+main .stampCode input{
+    text-align: center;
+    font-size: 30px;
+    border: none;
+    color: #666;
+}
+main .stampCode figure{
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    border: 1px solid #000;
+    margin: 20px auto;
+    text-align: center;
+    width: 90px;
+    padding: 10px;
+}
+.entryPicture label{
+    padding: 10px 40px;
+    color: #fff;
+    background-color: #384878;
+    cursor: pointer;
+}
+.entryPicture label input{
+    display: none;
 }

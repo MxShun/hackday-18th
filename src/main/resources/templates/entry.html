@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>切手画像アップロード | Kitteless</title>
     <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="entry.css">
 </head>
 
 <body>
@@ -14,15 +13,23 @@
 
 <main class="entry">
   <h2>画像アップロード</h2>
-    <p>切手コード</p>
-    <form>
-        <input type="text" name="stampCode" readonly />
+    <form class="stampCode">
+        <h3>切手コード</h3>
+        <input type="text" name="stampCode" placeholder="切手コード" value="XXX - XXX - XXX" readonly />
+        <p>切手コードを郵便物に枠線も含め以下のようにペンでお書きください</p>
+        <p>例：3A1 - 479 - GD5 の場合</p>
+        <figure>3A1<br>479<br>GD5</figure>
     </form>
-  <form method="post" action="/entry">
+    <form method="post" action="/entry" class="entryPicture">
+        <h3>切手の撮影</h3>
+        <p>書いたコードを撮影し<br>撮影した画像をアップロードしてください</p>
+        <label>
       <input type="file" name="image" accept="image/*" capture="camera" />
+            ファイルを選択
+        </label>
       <br>
       <input type="submit" value="画像送信">
-  </form>
+    </form>
 </main>
 </body>
 </html>
