@@ -1,5 +1,6 @@
 package com.kitteless.kittelessfront.controller;
 
+import com.kitteless.kittelessfront.service.PaymentService;
 import com.kitteless.kittelessfront.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PaymentController {
 
-//    @Autowired
-//    PaymentService paymentService;
+    @Autowired
+    PaymentService paymentService;
 
     @PostMapping(value = "/payment")
     public String payment(
@@ -23,7 +24,7 @@ public class PaymentController {
             Model model
     ) {
         // TODO: 支払い金額を処理
-//        paymentService.payment(price);
+        paymentService.payment(price);
         // TODO: レスポンスにsetAttributeしたりする
         return "payment";
     }
