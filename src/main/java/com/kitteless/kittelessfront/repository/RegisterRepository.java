@@ -1,19 +1,22 @@
 package com.kitteless.kittelessfront.repository;
 
-import com.kitteless.kittelessfront.data.RegisterData;
+import com.kitteless.kittelessfront.data.RegisterDataResponse;
+import com.kitteless.kittelessfront.data.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class RegisterRepository {
 
-    private RestTemplate restTemplate;
+    public RegisterDataResponse post(String username, String password) {
+        User user = new User();
+        user.setId("");
+        user.setName(username);
+        user.setPassword(password);
 
-    public String post(String username, String password) {
-        RegisterData registerData = restTemplate.getForObject("hoge", RegisterData.class);
-
-        // return registerData.getResult();
-        return "success";
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForObject("http://localhost:1123/register", user, RegisterDataResponse.class);
     }
 
 }
