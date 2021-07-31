@@ -23,7 +23,10 @@ public class LoginController {
             @RequestParam String password,
             Model model
     ) {
-        loginService.login(username, password);
+        boolean result = loginService.login(username, password);
+        if (result) {
+            return "redirect:[金額入力+決済画面]";
+        }
 
         return "login";
     }
