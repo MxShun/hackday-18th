@@ -4,17 +4,23 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LOGIN</title>
+  <title>ログイン | Kitteless</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
-  <div>LOGIN</div>
+<header><h1>Kitteless</h1></header>
+
+<main class="login">
+  <h2>ログイン</h2>
 <!--  <p th:if="">usrenameまたはpasswordが間違っています。</p>-->
   <button onclick="location.href='/register'">アカウント登録はこちら</button>
   <form method="post" action="/login">
-    <label>username:</label><input type="text" name="username" />
-    <label>password:</label><input type="text" name="password" />
-    <input type="submit">
+    <input type="text" name="username" placeholder="username"/>
+    <input type="text" name="password" placeholder="password"/>
+    <input type="submit" value="ログイン">
   </form>
+</main>
 </body>
 </html>

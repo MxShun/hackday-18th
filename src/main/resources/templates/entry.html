@@ -4,16 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>アップロード</title>
+    <title>切手画像アップロード | Kitteless</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="entry.css">
 </head>
 
 <body>
-  <div>アップロード画面</div>
-  <form method="post" action="/register">
-      <p>切手コード入れたい</p>
-      <label>stampcode:</label><input type="file" name="image" accept="image/*" capture="camera" />
+<header><h1>Kitteless</h1></header>
+
+<main class="entry">
+  <h2>画像アップロード</h2>
+    <p>切手コード</p>
+    <form>
+        <input type="text" name="stampCode" readonly />
+    </form>
+  <form method="post" action="/entry">
+      <input type="file" name="image" accept="image/*" capture="camera" />
       <br>
-      <input type="submit">
+      <input type="submit" value="画像送信">
   </form>
+</main>
 </body>
 </html>

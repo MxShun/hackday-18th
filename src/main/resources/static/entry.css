@@ -1,15 +1,15 @@
-.register{
+.entry{
     background-color: #fff;
     padding: 20px;
 }
-.register h2{
+.entry h2{
     font-size: 20px;
 }
-.register form{
+.entry form{
 
 }
 
-.register input:not([type="submit"]){
+.entry input:not([type="submit"]){
     font-size: 20px;
     width: 80%;
     border: none;
@@ -17,11 +17,11 @@
     border-bottom: 1px solid #ddd;
 }
 
-.register input:not([type="submit"])::placeholder{
+.entry input:not([type="submit"])::placeholder{
     color: #aaa;
 }
 
-.register input[type="submit"]{
+.entry input[type="submit"]{
     background-color: #def;
     padding: 5px 20px;
     border-color: #888;
