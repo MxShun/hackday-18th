@@ -20,7 +20,10 @@ public class EntryController {
             @RequestParam String image,
             Model model
     ) {
-        entryService.entry(stampCode, image);
+        boolean result = entryService.entry(stampCode, image);
+        // if (result) {
+        //     return "redirect:[OCR結果確認+認証]";
+        // }
 
         return "entry";
     }
