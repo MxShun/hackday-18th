@@ -27,13 +27,22 @@ public class EntryController {
             HttpSession session
     ) {
         String imageString = "";
+        String stampCode = session.getAttribute("stampCode").toString();
+
         try {
             byte[] imgBytes = image.getBytes();
-            imageString = Base64.getEncoder().encodeToString(imgBytes);
+
+            if (imgBytes.length == 0) {
+                StampPresenter stampPresenter = new StampPresenter(stampCode);
+                model.addAttribute(stampPresenter);
+                model.addAttribute("result", false);
+                return "entry";
+            }
+
+            imageString = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(imgBytes);
         } catch (Exception e) {
 
         }
-        String stampCode = session.getAttribute("stampCode").toString();
         String userId = session.getAttribute("userId").toString();
         boolean result = entryService.entry(userId, stampCode, imageString);
         
@@ -41,6 +50,8 @@ public class EntryController {
             return "redirect:complete";
         }
 
+        StampPresenter stampPresenter = new StampPresenter(stampCode);
+        model.addAttribute(stampPresenter);
         model.addAttribute("result", false);
         return "entry";
     }

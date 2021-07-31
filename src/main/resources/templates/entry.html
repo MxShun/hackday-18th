@@ -14,6 +14,9 @@
 
 <main class="entry">
   <h2>画像アップロード</h2>
+
+    <p th:if="${result}==false" class="attention">切手コードが正しく解析されませんでした。もう一度撮影してアップロードしてください。</p>
+
     <form class="stampCode">
         <h3>切手コード</h3>
         <input type="text" name="stampCode" placeholder="切手コード" th:value="${stampPresenter.formattedStampCode()}" readonly />
@@ -21,7 +24,7 @@
         <p>例：361 - 479 - 825 の場合</p>
         <figure>361<br>479<br>825</figure>
     </form>
-    <form method="post" action="/post-office/match" enctype="multipart/form-data" class="entryPicture">
+    <form method="post" action="/entry" enctype="multipart/form-data" class="entryPicture">
         <h3>切手の撮影</h3>
         <p>書いたコードを撮影し<br>撮影した画像をアップロードしてください</p>
         <label>

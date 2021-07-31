@@ -14,14 +14,7 @@ public class PaymentRepository {
         paymentData.setAmount(price);
 
         RestTemplate restTemplate = new RestTemplate();
-        return stub();
-        // return restTemplate.postForObject("http://localhost:1123/payment", paymentData, PaymentDataResponse.class);
+        return restTemplate.postForObject("http://localhost:1123/payment", paymentData, PaymentDataResponse.class);
     }
 
-    private PaymentDataResponse stub() {
-        PaymentDataResponse paymentDataResponse = new PaymentDataResponse();
-        paymentDataResponse.setPaymentResult("success");
-        paymentDataResponse.setStampCode("123456789");
-        return paymentDataResponse;
-    }
 }

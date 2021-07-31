@@ -15,6 +15,7 @@
 <main class="payment">
     <h2>決済登録</h2>
     <form method="post" action="/payment">
+        <p th:if="${result}==false" th:text="${errorDetail}" class="attention"></p>
         <input type="number" name="price" placeholder="切手の金額"/>
         <input type="submit" value="決済">
     </form>

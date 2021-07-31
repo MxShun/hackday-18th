@@ -23,10 +23,16 @@ public class PaymentController {
 
     @PostMapping(value = "/payment")
     public String payment(
-            @RequestParam Integer price,
+            @RequestParam(required = false) Integer price,
             Model model,
             HttpSession session
     ) {
+        if (price == null) {
+            model.addAttribute("result", false);
+            model.addAttribute("errorDetail", "金額を入力してください");
+            return "payment";
+        }
+
         String userId = session.getAttribute("userId").toString();
         Stamp stamp = paymentService.getStampWithPayment(userId, price);
 
@@ -36,6 +42,7 @@ public class PaymentController {
         }
 
         model.addAttribute("result", false);
+        model.addAttribute("errorDetail", "");
         return "payment";
     }
 

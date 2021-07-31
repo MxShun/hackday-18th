@@ -27,10 +27,10 @@ public class RegisterController {
         boolean isRegist = registerService.register(username, password);
 
         if (isRegist) {
-            return "login";
+            return "redirect:login";
         }
 
-        model.addAttribute("login", false);
+        model.addAttribute("result", false);
         return "register";
     }
 

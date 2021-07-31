@@ -16,13 +16,7 @@ public class LoginRepository {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        return stub(user);
-        //return restTemplate.postForObject("http://localhost:1123/login", user, LoginResponse.class);
+        return restTemplate.postForObject("http://localhost:1123/login", user, LoginResponse.class);
     }
 
-    private LoginResponse stub(User user) {
-        LoginResponse loginResponse = new LoginResponse();
-        loginResponse.setUserId("12345678");
-        return loginResponse;
-    }
 }

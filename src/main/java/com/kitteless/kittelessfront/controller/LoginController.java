@@ -32,8 +32,8 @@ public class LoginController {
             return "redirect:payment";
         }
 
-        // ログインに失敗したら login: false を model にセットするので、画面側でこれを使って失敗したことを表示する
-        model.addAttribute("login", false);
+        // ログインに失敗したら result: false を model にセットするので、画面側でこれを使って失敗したことを表示する
+        model.addAttribute("result", false);
         return "login";
     }
 
