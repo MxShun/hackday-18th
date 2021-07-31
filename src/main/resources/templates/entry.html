@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>アップロード</title>
+</head>
+
+<body>
+  <div>アップロード画面</div>
+  <form method="post" action="/register">
+      <p>切手コード入れたい</p>
+      <label>stampcode:</label><input type="file" name="image" accept="image/*" capture="camera" />
+      <br>
+      <input type="submit">
+  </form>
+</body>
+</html>
