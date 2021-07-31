@@ -7,13 +7,13 @@ import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class PaymentRepository {
-    private RestTemplate restTemplate;
 
     public PaymentDataResponse post (String userId, int price) {
         PaymentData paymentData = new PaymentData();
         paymentData.setUserId(userId);
         paymentData.setAmount(price);
 
+        RestTemplate restTemplate = new RestTemplate();
         return stub();
         // return restTemplate.postForObject("http://localhost:1123/payment", paymentData, PaymentDataResponse.class);
     }
