@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>切手画像アップロード | Kitteless Office</title>
+  <link rel="stylesheet" href="/common.css">
+  <script src="/imagePreview.js"></script>
+</head>
+
+<body>
+<header class="office"><h1>Kitteless Office</h1></header>
+
+<main class="entry">
+  <h2>画像アップロード</h2>
+  <form method="post" action="/match" enctype="multipart/form-data" class="entryPicture">
+    <h3>切手の撮影</h3>
+    <p>郵便物の切手を撮影し<br>撮影した画像をアップロードしてください</p>
+    <label>
+      <input type="file" name="image" accept="image/*" capture="camera" id="file" onchange="previewImage(this);"/>
+      ファイルを選択
+    </label>
+    <br>
+    <input type="submit" value="画像送信">
+    <img id="preview" src="">
+  </form>
+
+</main>
+</body>
+</html>

@@ -18,8 +18,8 @@
         <h3>切手コード</h3>
         <input type="text" name="stampCode" placeholder="切手コード" th:value="${stampPresenter.formattedStampCode()}" readonly />
         <p>切手コードを郵便物に枠線も含め以下のようにペンでお書きください</p>
-        <p>例：3A1 - 479 - GD5 の場合</p>
-        <figure>3A1<br>479<br>GD5</figure>
+        <p>例：361 - 479 - 825 の場合</p>
+        <figure>361<br>479<br>825</figure>
     </form>
     <form method="post" action="/post-office/match" enctype="multipart/form-data" class="entryPicture">
         <h3>切手の撮影</h3>
