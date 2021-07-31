@@ -1,6 +1,5 @@
 package com.kitteless.kittelessfront.controller;
 
-import com.kitteless.kittelessfront.service.LoginService;
 import com.kitteless.kittelessfront.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ public class RegisterController {
         // TODO: リクエストでユーザ名とか受け取ったりする
 
         // TODO: serviceできあがりしだい呼び出す
-        registerService.register();
+        registerService.register(username, password);
 
         // TODO: レスポンスにsetAttributeしたりする
         return "register";
