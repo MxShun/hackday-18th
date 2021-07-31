@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/imagePreview.js"></script>
     <title>アップロード</title>
 </head>
 
 <body>
   <div>アップロード画面</div>
-  <form method="post" action="/register">
+  <form method="post" action="/entry" enctype="multipart/form-data">
       <p>切手コード入れたい</p>
-      <label>stampcode:</label><input type="file" name="image" accept="image/*" capture="camera" />
+      <label>img:</label><input type="file" name="image" accept="image/*" capture="camera" id="file" />
       <br>
       <input type="submit">
   </form>

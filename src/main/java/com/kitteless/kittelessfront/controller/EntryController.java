@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Base64;
 
 @Controller
 public class EntryController {
@@ -16,11 +19,16 @@ public class EntryController {
 
     @PostMapping(value = "/entry")
     public String login(
-            @RequestParam String stampCode,
-            @RequestParam String image,
+            // TODO: stampCodeは必須なので直す
+            @RequestParam(required = false) String stampCode,
+            @RequestParam MultipartFile image,
             Model model
     ) {
-        boolean result = entryService.entry(stampCode, image);
+        try {
+            byte[] bytes = image.getBytes();
+            String str = Base64.getEncoder().encodeToString(bytes);
+        } catch (Exception e) {}
+        // boolean result = entryService.entry(stampCode, image);
         // if (result) {
         //     return "redirect:[OCR結果確認+認証]";
         // }
