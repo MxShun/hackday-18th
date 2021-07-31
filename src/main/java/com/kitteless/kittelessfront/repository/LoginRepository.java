@@ -1,17 +1,28 @@
 package com.kitteless.kittelessfront.repository;
 
-import com.kitteless.kittelessfront.data.LoginData;
+import com.kitteless.kittelessfront.data.LoginResponse;
+import com.kitteless.kittelessfront.data.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class LoginRepository {
 
-    private RestTemplate restTemplate;
+    public LoginResponse post(String username, String password) {
+        User user = new User();
+        user.setId("");
+        user.setName(username);
+        user.setPassword(password);
 
-    public String post(String username, String password) {
-        LoginData loginData = restTemplate.getForObject("loginAPI", LoginData.class);
+        RestTemplate restTemplate = new RestTemplate();
 
-        return "success";
+        return stub(user);
+        //return restTemplate.postForObject("http://localhost:1123/login", user, LoginResponse.class);
+    }
+
+    private LoginResponse stub(User user) {
+        LoginResponse loginResponse = new LoginResponse();
+        loginResponse.setUserId("12345678");
+        return loginResponse;
     }
 }

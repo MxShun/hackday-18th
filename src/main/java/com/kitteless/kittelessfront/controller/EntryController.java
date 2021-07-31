@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Base64;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class EntryController {
 
@@ -18,28 +20,30 @@ public class EntryController {
     EntryService entryService;
 
     @PostMapping(value = "/entry")
-    public String login(
+    public String entry(
             // TODO: stampCodeは必須なので直す
             @RequestParam(required = false) String stampCode,
             @RequestParam MultipartFile image,
-            Model model
+            Model model,
+            HttpSession session
     ) {
         try {
-            byte[] bytes = image.getBytes();
-            String str = Base64.getEncoder().encodeToString(bytes);
+            byte[] imgBytes = image.getBytes();
+            String imgStr = Base64.getEncoder().encodeToString(imgBytes);
         } catch (Exception e) {}
-        // boolean result = entryService.entry(stampCode, image);
-        // if (result) {
-        //     return "redirect:[OCR結果確認+認証]";
-        // }
+        String userId = session.getAttribute("userId").toString();
+        boolean result = entryService.entry(userId, stampCode, imgStr);
+        
+        if (result) {
+            return "redirect:complete";
+        }
 
+        model.addAttribute("result", false);
         return "entry";
     }
 
     @GetMapping(value = "/entry")
-    public String entryRegister(
-            Model model
-    ) {
+    public String showEntry() {
         return "entry";
     }
 }

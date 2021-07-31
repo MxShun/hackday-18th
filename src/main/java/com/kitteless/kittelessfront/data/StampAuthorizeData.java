@@ -3,7 +3,7 @@ package com.kitteless.kittelessfront.data;
 import lombok.Data;
 
 @Data
-public class PaymentData {
+public class StampAuthorizeData {
     private String userId;
-    private Integer amount;
+    private String stampCode;
 }

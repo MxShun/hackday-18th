@@ -4,18 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>切手画像アップロード | Kitteless</title>
+    <link rel="stylesheet" href="common.css">
     <script src="imagePreview.js"></script>
-    <title>アップロード</title>
 </head>
 
 <body>
-  <div>アップロード画面</div>
-  <form method="post" action="/entry" enctype="multipart/form-data">
-      <p>切手コード入れたい</p>
-      <label>img:</label><input type="file" name="image" accept="image/*" capture="camera" id="file" onchange="previewImage(this);"/>
+<header><h1>Kitteless</h1></header>
+
+<main class="entry">
+  <h2>画像アップロード</h2>
+    <form class="stampCode">
+        <h3>切手コード</h3>
+        <input type="text" name="stampCode" placeholder="切手コード" value="XXX - XXX - XXX" readonly />
+        <p>切手コードを郵便物に枠線も含め以下のようにペンでお書きください</p>
+        <p>例：3A1 - 479 - GD5 の場合</p>
+        <figure>3A1<br>479<br>GD5</figure>
+    </form>
+    <form method="post" action="/entry" enctype="multipart/form-data" class="entryPicture">
+        <h3>切手の撮影</h3>
+        <p>書いたコードを撮影し<br>撮影した画像をアップロードしてください</p>
+        <label>
+            <input type="file" name="image" accept="image/*" capture="camera" id="file" onchange="previewImage(this);"/>
+            ファイルを選択
+        </label>
       <br>
-      <input type="submit">
-  </form>
-  <img id="preview" src="" style="max-width:200px;">
+      <input type="submit" value="画像送信">
+      <img id="preview" src="" style="max-width:200px;">
+    </form>
+    
+</main>
 </body>
 </html>
