@@ -9,7 +9,7 @@
 
 <body>
   <div>LOGIN</div>
-<!--  <p th:if="">usrenameまたはpasswordが間違っています。</p>-->
+  <p th:if="${login}==false">usernameまたはpasswordが間違っています。</p>
   <button onclick="location.href='/register'">アカウント登録はこちら</button>
   <form method="post" action="/login">
     <label>username:</label><input type="text" name="username" />

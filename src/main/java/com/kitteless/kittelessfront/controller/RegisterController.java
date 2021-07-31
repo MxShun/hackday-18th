@@ -19,7 +19,7 @@ public class RegisterController {
 
 
     @PostMapping(value = "/register")
-    public String login(
+    public String register(
             @RequestParam String username,
             @RequestParam String password,
             Model model
@@ -35,9 +35,7 @@ public class RegisterController {
     }
 
     @GetMapping(value = "/register")
-    public String showRegister(
-            Model model
-    ) {
+    public String showRegister() {
         return "register";
     }
 }
