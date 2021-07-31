@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>決済 | Kitteless</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+<header><h1>Kitteless</h1></header>
+
+<main class="register">
+    <h2>決済登録</h2>
+    <form method="post" action="/payment">
+        <input type="number" name="price" placeholder="price"/>
+        <input type="submit" value="決済">
+    </form>
+</main>
+
+</body>
+</html>
