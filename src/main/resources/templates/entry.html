@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>切手画像アップロード | Kitteless</title>
     <link rel="stylesheet" href="common.css">
+    <script src="imagePreview.js"></script>
 </head>
 
 <body>
@@ -20,16 +21,18 @@
         <p>例：3A1 - 479 - GD5 の場合</p>
         <figure>3A1<br>479<br>GD5</figure>
     </form>
-    <form method="post" action="/entry" class="entryPicture">
+    <form method="post" action="/entry" enctype="multipart/form-data" class="entryPicture">
         <h3>切手の撮影</h3>
         <p>書いたコードを撮影し<br>撮影した画像をアップロードしてください</p>
         <label>
-            <input type="file" name="image" accept="image/*" capture="camera" />
+            <input type="file" name="image" accept="image/*" capture="camera" id="file" onchange="previewImage(this);"/>
             ファイルを選択
         </label>
       <br>
       <input type="submit" value="画像送信">
+      <img id="preview" src="" style="max-width:200px;">
     </form>
+    
 </main>
 </body>
 </html>

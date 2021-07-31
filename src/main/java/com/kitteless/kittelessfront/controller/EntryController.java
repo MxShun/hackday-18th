@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Base64;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,14 +21,19 @@ public class EntryController {
 
     @PostMapping(value = "/entry")
     public String entry(
-            @RequestParam String stampCode,
-            @RequestParam String image,
+            // TODO: stampCodeは必須なので直す
+            @RequestParam(required = false) String stampCode,
+            @RequestParam MultipartFile image,
             Model model,
             HttpSession session
     ) {
+        try {
+            byte[] imgBytes = image.getBytes();
+            String imgStr = Base64.getEncoder().encodeToString(imgBytes);
+        } catch (Exception e) {}
         String userId = session.getAttribute("userId").toString();
-        boolean result = entryService.entry(userId, stampCode, image);
-
+        boolean result = entryService.entry(userId, stampCode, imgStr);
+        
         if (result) {
             return "redirect:complete";
         }
