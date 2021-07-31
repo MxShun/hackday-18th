@@ -1,5 +1,8 @@
 package com.kitteless.kittelessfront.data;
 
-public class RegisterData {
+import lombok.Data;
+
+@Data
+public class RegisterDataResponse {
     private String result;
 }

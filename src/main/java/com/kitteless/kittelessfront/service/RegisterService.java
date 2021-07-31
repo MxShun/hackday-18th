@@ -1,5 +1,6 @@
 package com.kitteless.kittelessfront.service;
 
+import com.kitteless.kittelessfront.data.RegisterDataResponse;
 import com.kitteless.kittelessfront.repository.RegisterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,9 @@ public class RegisterService {
      * @return
      */
     public boolean register(String username, String password) {
-        String result = registerRepository.post(username, password);
+        RegisterDataResponse result = registerRepository.post(username, password);
 
-        if (result.equals("success")) {
+        if (result.getResult().equals("success")) {
             return true;
         }
 

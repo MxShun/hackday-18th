@@ -24,12 +24,13 @@ public class RegisterController {
             @RequestParam String password,
             Model model
     ) {
-        // TODO: リクエストでユーザ名とか受け取ったりする
+        boolean isRegist = registerService.register(username, password);
 
-        // TODO: serviceできあがりしだい呼び出す
-        registerService.register(username, password);
+        if (isRegist) {
+            return "login";
+        }
 
-        // TODO: レスポンスにsetAttributeしたりする
+        model.addAttribute("login", false);
         return "register";
     }
 
@@ -37,11 +38,6 @@ public class RegisterController {
     public String showRegister(
             Model model
     ) {
-        // TODO: リクエストでユーザ名とか受け取ったりする
-
-        // TODO: serviceできあがりしだい呼び出す
-
-        // TODO: レスポンスにsetAttributeしたりする
         return "register";
     }
 }
