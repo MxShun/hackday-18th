@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class EntryController {
 
@@ -15,23 +17,25 @@ public class EntryController {
     EntryService entryService;
 
     @PostMapping(value = "/entry")
-    public String login(
+    public String entry(
             @RequestParam String stampCode,
             @RequestParam String image,
-            Model model
+            Model model,
+            HttpSession session
     ) {
-        boolean result = entryService.entry(stampCode, image);
-        // if (result) {
-        //     return "redirect:[OCR結果確認+認証]";
-        // }
+        String userId = session.getAttribute("userId").toString();
+        boolean result = entryService.entry(userId, stampCode, image);
 
+        if (result) {
+            return "redirect:complete";
+        }
+
+        model.addAttribute("result", false);
         return "entry";
     }
 
     @GetMapping(value = "/entry")
-    public String entryRegister(
-            Model model
-    ) {
+    public String showEntry() {
         return "entry";
     }
 }

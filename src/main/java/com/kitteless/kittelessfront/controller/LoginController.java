@@ -1,6 +1,7 @@
 package com.kitteless.kittelessfront.controller;
 
 import com.kitteless.kittelessfront.service.LoginService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,20 +22,23 @@ public class LoginController {
     public String login(
             @RequestParam String username,
             @RequestParam String password,
-            Model model
+            Model model,
+            HttpSession session
     ) {
-        boolean result = loginService.login(username, password);
-        // if (result) {
-        //     return "redirect:[金額入力+決済画面]";
-        // }
+        String userId = loginService.login(username, password);
+        if (userId != null) {
+            // セッションにユーザIDを入れる
+            session.setAttribute("userId", userId);
+            return "redirect:payment";
+        }
 
+        // ログインに失敗したら login: false を model にセットするので、画面側でこれを使って失敗したことを表示する
+        model.addAttribute("login", false);
         return "login";
     }
 
     @GetMapping(value = "/login")
-    public String showLogin(
-            Model model
-    ) {
+    public String showLogin() {
         return "login";
     }
 

@@ -2,7 +2,6 @@ package com.kitteless.kittelessfront.repository;
 
 import com.kitteless.kittelessfront.data.RegisterDataResponse;
 import com.kitteless.kittelessfront.data.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 

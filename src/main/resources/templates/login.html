@@ -9,13 +9,15 @@
 </head>
 
 <body>
+
 <header><h1>Kitteless</h1></header>
 
 <main class="login">
   <h2>ログイン</h2>
-<!--  <p th:if="">usrenameまたはpasswordが間違っています。</p>-->
+　<p th:if="${login}==false">usernameまたはpasswordが間違っています。</p>
   <p>アカウントはお持ちですか？</p>
   <button onclick="location.href='/register'">新規会員登録</button>
+
   <form method="post" action="/login">
     <input type="text" name="username" placeholder="アカウント名"/>
     <input type="text" name="password" placeholder="パスワード"/>
