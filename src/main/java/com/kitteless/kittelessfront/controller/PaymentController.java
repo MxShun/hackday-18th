@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 決済登録
  */
@@ -21,10 +23,12 @@ public class PaymentController {
     @PostMapping(value = "/payment")
     public String payment(
             @RequestParam Integer price,
-            Model model
+            Model model,
+            HttpSession session
     ) {
-        // TODO: 支払い金額を処理
-        paymentService.payment(price);
+        String userId = session.getAttribute("userId").toString();
+        paymentService.payment(userId, price);
+
         // TODO: レスポンスにsetAttributeしたりする
         return "payment";
     }

@@ -1,5 +1,9 @@
 package com.kitteless.kittelessfront.data;
 
+import lombok.Data;
+
+@Data
 public class PaymentData {
-    private String result;
+    private String userId;
+    private Integer amount;
 }
