@@ -2,10 +2,10 @@ package com.kitteless.kittelessfront.repository;
 
 import com.kitteless.kittelessfront.data.OCRData;
 import com.kitteless.kittelessfront.data.OCRDataResponse;
-import com.kitteless.kittelessfront.data.StampAuthorizeData;
-import com.kitteless.kittelessfront.data.StampAuthorizeDataResponse;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
+@Repository
 public class MatchRepository {
 
     public OCRDataResponse post(String image) {

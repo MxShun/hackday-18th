@@ -1,8 +1,6 @@
 package com.kitteless.kittelessfront.service;
 
-import com.kitteless.kittelessfront.data.OCRData;
 import com.kitteless.kittelessfront.data.OCRDataResponse;
-import com.kitteless.kittelessfront.data.StampAuthorizeDataResponse;
 import com.kitteless.kittelessfront.repository.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class MatchService {
 
     // うごかない MatchRepositoryが見つからないらしい
+    // -> matchrepository に @Repository　アノテーションつけたよ
     @Autowired
     MatchRepository matchRepository;
 
