@@ -96,6 +96,7 @@ main .stampCode figure{
     padding: 10px 40px;
     color: #fff;
     background-color: #384878;
+    text-decoration: underline;
     cursor: pointer;
 }
 .entryPicture label input{
