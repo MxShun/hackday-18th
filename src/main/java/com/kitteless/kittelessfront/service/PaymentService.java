@@ -1,11 +1,14 @@
 package com.kitteless.kittelessfront.service;
 
+import com.kitteless.kittelessfront.data.Charge;
 import com.kitteless.kittelessfront.data.ChargeData;
 import com.kitteless.kittelessfront.data.PaymentDataResponse;
 import com.kitteless.kittelessfront.data.Stamp;
 import com.kitteless.kittelessfront.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PaymentService {
@@ -25,7 +28,7 @@ public class PaymentService {
         return null;
     }
 
-    public ChargeData getChargeData() {
+    public List<Charge> getChargeData() {
         return paymentRepository.postCharge();
     }
 }
