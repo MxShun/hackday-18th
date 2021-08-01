@@ -13,7 +13,7 @@ public class MatchService {
     @Autowired
     MatchRepository matchRepository;
 
-    public boolean entry(String stampCode, String image) {
+    public boolean match(String stampCode, String image) {
         OCRDataResponse result = matchRepository.post(image);
 
         if (!result.getResult().equals("success")) {
