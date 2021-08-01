@@ -14,4 +14,8 @@ public class StampPresenter {
     public String formattedStampCode() {
         return String.format("%,d", Integer.parseInt(this.stampCode)).replaceAll(",", " - ");
     }
+
+    public String[] previewStampCode() {
+        return String.format("%,d", Integer.parseInt(this.stampCode)).split(",");
+    }
 }

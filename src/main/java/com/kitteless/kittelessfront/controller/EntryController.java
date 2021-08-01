@@ -39,7 +39,7 @@ public class EntryController {
                 return "entry";
             }
 
-            imageString = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(imgBytes);
+            imageString = Base64.getEncoder().encodeToString(imgBytes);
         } catch (Exception e) {
 
         }
