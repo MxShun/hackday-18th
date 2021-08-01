@@ -1,17 +1,10 @@
 package com.kitteless.kittelessfront.repository;
 
-import com.kitteless.kittelessfront.data.Charge;
-import com.kitteless.kittelessfront.data.ChargeData;
-import com.kitteless.kittelessfront.data.PaymentData;
-import com.kitteless.kittelessfront.data.PaymentDataResponse;
-import lombok.Data;
+import com.kitteless.kittelessfront.data.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class PaymentRepository {
@@ -27,35 +20,8 @@ public class PaymentRepository {
 
     public List<Charge> postCharge() {
         RestTemplate restTemplate = new RestTemplate();
-        return stub();
-        //return restTemplate.postForObject("http://localhost:1123/charge", null, ChargeData.class);
+        ChargeResponseList result = restTemplate.postForObject("http://localhost:1123/charge", null, ChargeResponseList.class);
+        return result.getChargeResponseList();
     }
 
-    private List<Charge> stub() {
-        List<Charge> chargeList = new ArrayList<>();
-        Charge charge = new Charge();
-        charge.setFee(84);
-        charge.setType("84円切手");
-        chargeList.add(charge);
-        charge = new Charge();
-        charge.setFee(94);
-        charge.setType("94円切手");
-        chargeList.add(charge);
-        charge.setFee(150);
-        charge.setType("84円切手");
-        chargeList.add(charge);
-        charge = new Charge();
-        charge.setFee(180);
-        charge.setType("94円切手");
-        chargeList.add(charge);
-        charge = new Charge();
-        charge.setFee(200);
-        charge.setType("94円切手");
-        chargeList.add(charge);
-        charge = new Charge();
-        charge.setFee(250);
-        charge.setType("94円切手");
-        chargeList.add(charge);
-        return chargeList;
-    }
 }
