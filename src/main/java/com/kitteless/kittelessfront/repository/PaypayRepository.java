@@ -1,6 +1,5 @@
 package com.kitteless.kittelessfront.repository;
 
-import com.kitteless.kittelessfront.data.PaymentDataResponse;
 import jp.ne.paypay.ApiClient;
 import jp.ne.paypay.Configuration;
 import jp.ne.paypay.api.PaymentApi;
@@ -9,6 +8,8 @@ import jp.ne.paypay.model.QRCode;
 import jp.ne.paypay.model.QRCodeDetails;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
+
 @Repository
 public class PaypayRepository {
 
@@ -16,16 +17,12 @@ public class PaypayRepository {
 
         try{
 
-            ApiClient apiClient = new Configuration().getDefaultApiClient();
-            //Set True for Production Environment. By Default this is set False for Sandbox Environment.
-            apiClient.setProductionMode(false);
-            apiClient.setApiKey("a_IY5mdJ6fB1_YRCJ");
-            apiClient.setApiSecretKey("YHbiSKQ4nzL4SXEuO9D/GY14TiT5729St30vyBITJmc=");
-
+            ApiClient apiClient = createApiClient();
             QRCode qrCode = new QRCode();
             qrCode.setAmount(new MoneyAmount().amount(price).currency(MoneyAmount.CurrencyEnum.JPY));
-            qrCode.setMerchantPaymentId("my_payment_id");
+            qrCode.setMerchantPaymentId("my_payment_id_9871623456871234_rand");
             qrCode.setCodeType("ORDER_QR");
+            qrCode.requestedAt(Instant.now().getEpochSecond());
             qrCode.setOrderDescription("Kitteless");
             qrCode.isAuthorization(false);
             qrCode.setRedirectUrl("https://localhost:8080/payment/");
@@ -41,6 +38,19 @@ public class PaypayRepository {
             System.out.println(e);
         }
 
+        return null;
+    }
+
+    private static ApiClient createApiClient() {
+        try {
+            ApiClient apiClient = new Configuration().getDefaultApiClient();
+            apiClient.setProductionMode(false);
+            apiClient.setApiKey("a_IY5mdJ6fB1_YRCJ");
+            apiClient.setApiSecretKey("YHbiSKQ4nzL4SXEuO9D/GY14TiT5729St30vyBITJmc=");
+            return apiClient;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         return null;
     }
 
