@@ -5,6 +5,7 @@ import com.kitteless.kittelessfront.data.ChargeData;
 import com.kitteless.kittelessfront.data.PaymentDataResponse;
 import com.kitteless.kittelessfront.data.Stamp;
 import com.kitteless.kittelessfront.repository.PaymentRepository;
+import com.kitteless.kittelessfront.repository.PaypayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,14 @@ public class PaymentService {
 
     public List<Charge> getChargeData() {
         return paymentRepository.postCharge();
+    }
+
+    @Autowired
+    PaypayRepository paypayRepository;
+
+    public String paypay(String userId, int price) {
+
+        String url = paypayRepository.call(userId, price);
+        return url;
     }
 }

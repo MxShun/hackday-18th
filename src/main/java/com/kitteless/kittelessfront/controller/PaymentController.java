@@ -6,9 +6,9 @@ import com.kitteless.kittelessfront.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,7 +25,8 @@ public class PaymentController {
     public String payment(
             @RequestParam(required = false) Integer price,
             Model model,
-            HttpSession session
+            HttpSession session,
+            RedirectAttributes redirectAttributes
     ) {
         if (price == null) {
             model.addAttribute("result", false);
@@ -33,17 +34,30 @@ public class PaymentController {
             return "payment";
         }
 
+        if (session.getAttribute("userId") == null) {
+            session.setAttribute("userId", "hoge");
+        }
         String userId = session.getAttribute("userId").toString();
         Stamp stamp = paymentService.getStampWithPayment(userId, price);
 
         if(stamp != null) {
             session.setAttribute("stampCode", stamp.getCode());
-            return "redirect:entry";
+            String url = paymentService.paypay(userId, price);
+            redirectAttributes.addFlashAttribute("url", url);
+            return "redirect:/paypay";
         }
 
         model.addAttribute("result", false);
         model.addAttribute("errorDetail", "金額を入力してください");
         return "payment";
+    }
+
+    @RequestMapping("/paypay")
+    public RedirectView localRedirect(@ModelAttribute("url") String url) {
+        System.out.println("URL === " + url);
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(url);
+        return redirectView;
     }
 
     @GetMapping(value = "/payment")
