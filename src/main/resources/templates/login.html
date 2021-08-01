@@ -13,7 +13,7 @@
 <main class="login">
   <h2>ログイン</h2>
   <form method="post" action="/login">
-    <p th:if="${result}==false" class="attention">usernameまたはpasswordが間違っています。</p>
+    <p th:if="${result}==false" class="attention">アカウント名 または パスワード が間違っています。</p>
     <input type="text" name="username" placeholder="アカウント名"/>
     <input type="password" name="password" placeholder="パスワード"/>
     <input type="submit" value="ログイン">
