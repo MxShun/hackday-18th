@@ -16,8 +16,7 @@ public class StampRepository {
         stampAuthorizeData.setStampCode(stampCode);
 
         RestTemplate restTemplate = new RestTemplate();
-        return stub();
-        // return restTemplate.postForObject("http://localhost:1123/payment", stampAuthorizeData, StampAuthorizeDataResponse.class);
+        return restTemplate.postForObject("http://localhost:1123/stamp/authorize", stampAuthorizeData, StampAuthorizeDataResponse.class);
     }
 
     private StampAuthorizeDataResponse stub() {

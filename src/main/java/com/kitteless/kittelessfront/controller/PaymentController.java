@@ -47,12 +47,15 @@ public class PaymentController {
         }
 
         model.addAttribute("result", false);
-        model.addAttribute("errorDetail", "");
+        model.addAttribute("errorDetail", "金額を入力してください");
         return "payment";
     }
 
     @GetMapping(value = "/payment")
-    public String showPayment() {
+    public String showPayment(
+            Model model
+    ) {
+        model.addAttribute("stampList", paymentService.getChargeData());
         return "payment";
     }
 }

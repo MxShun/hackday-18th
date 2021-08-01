@@ -1,11 +1,15 @@
 package com.kitteless.kittelessfront.service;
 
+import com.kitteless.kittelessfront.data.Charge;
+import com.kitteless.kittelessfront.data.ChargeData;
 import com.kitteless.kittelessfront.data.PaymentDataResponse;
 import com.kitteless.kittelessfront.data.Stamp;
 import com.kitteless.kittelessfront.repository.PaymentRepository;
 import com.kitteless.kittelessfront.repository.PaypayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PaymentService {
@@ -14,7 +18,7 @@ public class PaymentService {
     PaymentRepository paymentRepository;
 
     public Stamp getStampWithPayment(String userId, int price) {
-        PaymentDataResponse result = paymentRepository.post(userId, price);
+        PaymentDataResponse result = paymentRepository.postPayment(userId, price);
 
         if (result.getPaymentResult().equals("success")) {
             Stamp stamp = new Stamp();
@@ -23,6 +27,10 @@ public class PaymentService {
         }
 
         return null;
+    }
+
+    public List<Charge> getChargeData() {
+        return paymentRepository.postCharge();
     }
 
     @Autowired
