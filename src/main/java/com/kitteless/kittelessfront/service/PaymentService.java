@@ -36,12 +36,9 @@ public class PaymentService {
     @Autowired
     PaypayRepository paypayRepository;
 
-    public Stamp paypay(String userId, int price) {
+    public String paypay(String userId, int price) {
 
-        paypayRepository.call(userId, price);
-
-        Stamp stamp = new Stamp();
-        stamp.setCode("998877665");
-        return stamp;
+        String url = paypayRepository.call(userId, price);
+        return url;
     }
 }

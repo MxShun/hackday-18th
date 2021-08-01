@@ -20,12 +20,12 @@ public class PaypayRepository {
             ApiClient apiClient = createApiClient();
             QRCode qrCode = new QRCode();
             qrCode.setAmount(new MoneyAmount().amount(price).currency(MoneyAmount.CurrencyEnum.JPY));
-            qrCode.setMerchantPaymentId("my_payment_id_9871623456871234_rand");
+            qrCode.setMerchantPaymentId(Instant.now().toString());
             qrCode.setCodeType("ORDER_QR");
             qrCode.requestedAt(Instant.now().getEpochSecond());
-            qrCode.setOrderDescription("Kitteless");
+            qrCode.setOrderDescription("Kitteless で 切手を買うよ！");
             qrCode.isAuthorization(false);
-            qrCode.setRedirectUrl("https://localhost:8080/payment/");
+            qrCode.setRedirectUrl("http://localhost:8080/entry");
             qrCode.setRedirectType(QRCode.RedirectTypeEnum.WEB_LINK);
             qrCode.setUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1");
 
@@ -33,7 +33,8 @@ public class PaypayRepository {
             PaymentApi apiInstance = new PaymentApi(apiClient);
             QRCodeDetails response = apiInstance.createQRCode(qrCode);
             // Printing if the method call was SUCCESS
-            System.out.println(response.getResultInfo().getCode());
+            System.out.println(response);
+            return response.getData().getUrl();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -47,6 +48,7 @@ public class PaypayRepository {
             apiClient.setProductionMode(false);
             apiClient.setApiKey("a_IY5mdJ6fB1_YRCJ");
             apiClient.setApiSecretKey("YHbiSKQ4nzL4SXEuO9D/GY14TiT5729St30vyBITJmc=");
+            apiClient.setAssumeMerchant("403396290898518016");
             return apiClient;
         } catch (Exception e) {
             System.out.println(e);
