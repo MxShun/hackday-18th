@@ -9,9 +9,7 @@
 </head>
 
 <body>
-
-<header><h1>Kitteless</h1></header>
-
+<div th:insert="~{common::#header}"></div>
 <main class="payment">
     <h2>決済登録</h2>
     <form method="post" action="/payment">
@@ -20,6 +18,6 @@
         <input type="submit" value="決済">
     </form>
 </main>
-
+<div th:insert="~{common::#footer}"></div>
 </body>
 </html>

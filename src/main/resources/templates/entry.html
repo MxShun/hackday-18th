@@ -10,13 +10,10 @@
 </head>
 
 <body>
-<header><h1>Kitteless</h1></header>
-
+<div th:insert="~{common::#header}"></div>
 <main class="entry">
   <h2>画像アップロード</h2>
-
     <p th:if="${result}==false" class="attention">切手コードが正しく解析されませんでした。もう一度撮影してアップロードしてください。</p>
-
     <form class="stampCode">
         <h3>切手コード</h3>
         <input type="text" name="stampCode" placeholder="切手コード" th:value="${stampPresenter.formattedStampCode()}" readonly />
@@ -35,7 +32,7 @@
       <input type="submit" value="画像送信">
       <img id="preview" src="">
     </form>
-    
 </main>
+<div th:insert="~{common::#footer}"></div>
 </body>
 </html>
