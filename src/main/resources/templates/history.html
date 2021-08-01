@@ -13,8 +13,8 @@
 <main class="history">
     <h2>購入履歴</h2>
     <ul class="historyList" >
-        <li th:each="history:${historyList}"><p><span th:text="${history.getDate()}"></span></p>
-            <p th:text="|${history.getFee()}円|"></p>
+        <li th:each="history:${historyList}"><p><span th:text="${history.getDateTime()}"></span></p>
+            <p th:text="|${history.getAmount()}円|"></p>
         </li>
     </ul>
 </main>

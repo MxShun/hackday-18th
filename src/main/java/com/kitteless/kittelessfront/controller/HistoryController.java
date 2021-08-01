@@ -1,5 +1,6 @@
 package com.kitteless.kittelessfront.controller;
 
+import com.kitteless.kittelessfront.data.HistoryList;
 import com.kitteless.kittelessfront.presenter.StampPresenter;
 import com.kitteless.kittelessfront.service.EntryService;
 import com.kitteless.kittelessfront.service.HistoryService;
@@ -29,7 +30,9 @@ public class HistoryController {
 
         String userId = session.getAttribute("userId").toString();
 
-        model.addAttribute("historyList", historyService.getHistoryData(userId));
+        HistoryList historyList = historyService.getHistoryData(userId);
+
+        model.addAttribute("historyList", historyList.getHistoryResponseList());
         return "history";
     }
 }
