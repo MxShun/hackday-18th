@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>購入履歴 | Kitteless</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+
+<body>
+<div th:insert="~{common::#header}"></div>
+<main class="history">
+    <h2>購入履歴</h2>
+    <ul class="historyList" >
+        <li th:each="history:${historyList}"><p><span th:text="${history.getDate()}"></span></p>
+            <p th:text="|${history.getFee()}円|"></p>
+        </li>
+    </ul>
+</main>
+</body>
+<div th:insert="~{common::#footer}"></div>
+</html>
