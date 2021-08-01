@@ -8,26 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchService {
 
-    // うごかない MatchRepositoryが見つからないらしい
-    // -> matchrepository に @Repository　アノテーションつけたよ
     @Autowired
     MatchRepository matchRepository;
 
-    public boolean match(String stampCode, String image) {
+    public boolean match(String image) {
         OCRDataResponse result = matchRepository.post(image);
 
-        if (!result.getResult().equals("success")) {
-            return false;
+        if (result.getResult().equals("success")) {
+            return true;
         }
 
-        String ocrStampCode = result.getText();
-
-        if (!stampCode.equals(ocrStampCode)) {
-            return false;
-        }
-
-
-        // ok判定わからん
-        return true;
+        return false;
     }
 }
