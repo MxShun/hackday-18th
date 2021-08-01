@@ -33,8 +33,13 @@ public class PaymentController {
             return "payment";
         }
 
+        if (session.getAttribute("userId") == null) {
+            session.setAttribute("userId", "hoge");
+        }
         String userId = session.getAttribute("userId").toString();
         Stamp stamp = paymentService.getStampWithPayment(userId, price);
+
+        paymentService.paypay(userId, price);
 
         if(stamp != null) {
             session.setAttribute("stampCode", stamp.getCode());
