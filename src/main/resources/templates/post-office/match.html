@@ -10,8 +10,7 @@
 </head>
 
 <body>
-<header class="office"><h1>Kitteless Office</h1></header>
-
+<div th:insert="~{common::#header}"></div>
 <main class="entry">
   <h2>画像アップロード</h2>
   <form method="post" action="/post-office/match" enctype="multipart/form-data" class="entryPicture">
@@ -25,7 +24,7 @@
     <input type="submit" value="画像送信">
     <img id="preview" src="">
   </form>
-
 </main>
+<div th:insert="~{common::#footer}"></div>
 </body>
 </html>

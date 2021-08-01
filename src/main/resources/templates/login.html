@@ -9,9 +9,7 @@
 </head>
 
 <body>
-
-<header><h1>Kitteless</h1></header>
-
+<div th:insert="~{common::#header}"></div>
 <main class="login">
   <h2>ログイン</h2>
   <form method="post" action="/login">
@@ -25,5 +23,6 @@
   <button onclick="location.href='/register'">新規会員登録</button>
 
 </main>
+<div th:insert="~{common::#footer}"></div>
 </body>
 </html>
