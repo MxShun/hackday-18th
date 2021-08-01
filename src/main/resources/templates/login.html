@@ -15,7 +15,7 @@
   <form method="post" action="/login">
     <p th:if="${result}==false" class="attention">usernameまたはpasswordが間違っています。</p>
     <input type="text" name="username" placeholder="アカウント名"/>
-    <input type="text" name="password" placeholder="パスワード"/>
+    <input type="password" name="password" placeholder="パスワード"/>
     <input type="submit" value="ログイン">
   </form>
 

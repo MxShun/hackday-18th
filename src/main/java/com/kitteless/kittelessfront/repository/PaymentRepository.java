@@ -23,5 +23,4 @@ public class PaymentRepository {
         ChargeResponseList result = restTemplate.postForObject("http://localhost:1123/charge", null, ChargeResponseList.class);
         return result.getChargeResponseList();
     }
-
 }
