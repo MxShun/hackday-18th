@@ -16,7 +16,7 @@
     <form method="post" action="/payment">
         <h3>金額一覧（円）</h3>
         <div>
-            <input type="button" class="choiceAmount" th:each="stamp : ${stampList}" th:value="${stamp.getFee()}"  th:data-detail="${stamp.getType()}">
+            <input type="button" class="choiceAmount" th:each="stamp : ${stampList}" th:value="${stamp.getAmount()}"  th:data-detail="${stamp.getStandard()}">
         </div>
         <p th:if="${result}==false" th:text="${errorDetail}" class="attention"></p>
         <input type="number" name="price" placeholder="0" id="choiceAmount"/><span>円</span>

@@ -1,27 +1,16 @@
 package com.kitteless.kittelessfront.repository;
 
-import com.kitteless.kittelessfront.data.OCRData;
-import com.kitteless.kittelessfront.data.OCRDataResponse;
+import com.kitteless.kittelessfront.data.OCRVerifyResponse;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
 public class MatchRepository {
 
-    public OCRDataResponse post(String image) {
-        OCRData ocrData = new OCRData();
-        ocrData.setImage(image);
+    public OCRVerifyResponse post(String image) {
 
         RestTemplate restTemplate = new RestTemplate();
-        return stub();
-
-        // return restTemplate.postForObject("http://localhost:1123/stamp/verify", ocrData, OCRDataResponse.class);
+        return restTemplate.postForObject("http://localhost:1123/stamp/verify", image, OCRVerifyResponse.class);
     }
 
-    private OCRDataResponse stub() {
-        OCRDataResponse ocrDataResponse = new OCRDataResponse();
-        ocrDataResponse.setText("imageData");
-        ocrDataResponse.setResult("success");
-        return ocrDataResponse;
-    }
 }
