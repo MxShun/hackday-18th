@@ -4,9 +4,12 @@ body, body * {
     display: block;
     box-sizing: border-box;
     font-size: 20px;
+    font-family: "Meiryo","メイリオ","Yu Gothic","游ゴシック", "游ゴシック体", sans-serif;
 }
 body{
     background-color: #eee;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 header{
