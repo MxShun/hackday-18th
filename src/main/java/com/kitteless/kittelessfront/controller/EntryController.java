@@ -43,6 +43,9 @@ public class EntryController {
         } catch (Exception e) {
 
         }
+        if (session.getAttribute("userId") == null) {
+            session.setAttribute("userId", "hoge");
+        }
         String userId = session.getAttribute("userId").toString();
         boolean result = entryService.entry(userId, stampCode, imageString);
         
@@ -61,7 +64,11 @@ public class EntryController {
             Model model,
             HttpSession session
     ) {
+        if (session.getAttribute("stampCode") == null) {
+            session.setAttribute("stampCode", "123456789");
+        }
         String stampCode = session.getAttribute("stampCode").toString();
+
         StampPresenter stampPresenter = new StampPresenter(stampCode);
         model.addAttribute(stampPresenter);
         return "entry";
