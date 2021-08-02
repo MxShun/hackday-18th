@@ -28,9 +28,6 @@ public class HistoryController {
             HttpSession session
     ) {
 
-        if(session.getAttribute("userId") == null) {
-            return "redirect:/login";
-        }
         String userId = session.getAttribute("userId").toString();
 
         HistoryList historyList = historyService.getHistoryData(userId);
