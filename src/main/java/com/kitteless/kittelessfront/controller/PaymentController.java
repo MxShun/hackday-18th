@@ -35,7 +35,7 @@ public class PaymentController {
         }
 
         if (session.getAttribute("userId") == null) {
-            session.setAttribute("userId", "hoge");
+            return "redirect:/login";
         }
         String userId = session.getAttribute("userId").toString();
         Stamp stamp = paymentService.getStampWithPayment(userId, price);

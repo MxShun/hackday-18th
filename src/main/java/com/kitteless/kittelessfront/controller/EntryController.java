@@ -65,8 +65,9 @@ public class EntryController {
             HttpSession session
     ) {
         if (session.getAttribute("stampCode") == null) {
-            session.setAttribute("stampCode", "123456789");
+            return "redirect:/payment";
         }
+
         String stampCode = session.getAttribute("stampCode").toString();
 
         StampPresenter stampPresenter = new StampPresenter(stampCode);

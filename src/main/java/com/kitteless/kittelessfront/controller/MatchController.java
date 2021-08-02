@@ -32,9 +32,7 @@ public class MatchController {
         return "/post-office/match";
     }
     @GetMapping(value = "/post-office/match")
-    public String showEntry(
-            Model model
-    ) {
+    public String showEntry() {
         return "/post-office/match";
     }
 }
